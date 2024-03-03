@@ -11,7 +11,7 @@ import { User } from 'src/modules/user/entities/user.entity';
 import { PrimaryGeneratedColumn } from 'typeorm';
 
 @Table({
-  tableName: 'SuperUsers',
+  tableName: 'super_user',
 })
 export class SuperUser extends Model {
   @PrimaryGeneratedColumn('uuid')

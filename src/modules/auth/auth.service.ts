@@ -64,7 +64,7 @@ export class AuthService {
       const token: any = await this.loginTokenService.generateToken(savedUser, {
         ...clientInfo,
       });
-      return token
+      return token;
     } catch (error) {
       if (error.parent.code === UNIQUE_KEY_VIOLATION) {
         throw new ConflictException('User already exists');
@@ -77,10 +77,10 @@ export class AuthService {
   async validateUserPassword(
     authCredentialsDto: AuthCredentialsDto,
   ): Promise<User> {
-    const { username, password } = authCredentialsDto;
+    const { email, password } = authCredentialsDto;
     const user = await this.userRepository
       .scope('withPassword')
-      .findOne({ where: { username } });
+      .findOne({ where: { email } });
 
     if (user) {
       const hash = await bcrypt.hash(password, user.salt);

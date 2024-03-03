@@ -3,6 +3,8 @@ import { REPOSITORIES } from 'src/constants/repositories';
 import { LoginToken } from '../auth/entities/login-token.entity';
 import { SuperUser } from '../user/entities/super-user.entity';
 import { User } from '../user/entities/user.entity';
+import { Exercise } from '../exercise/entities/exercise.entity';
+import { Workout } from '../workout/entities/workout.entity';
 
 export const globalDbProvider = [
   TransactionInterceptor,
@@ -17,5 +19,13 @@ export const globalDbProvider = [
   {
     provide: REPOSITORIES.LOGIN_TOKEN_REPOSITORY,
     useValue: LoginToken,
+  },
+  {
+    provide: REPOSITORIES.WORKOUT_REPOSITORY,
+    useValue: Workout,
+  },
+  {
+    provide: REPOSITORIES.EXERCISE_REPOSITORY,
+    useValue: Exercise,
   },
 ];

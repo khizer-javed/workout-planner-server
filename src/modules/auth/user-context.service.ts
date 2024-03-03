@@ -22,12 +22,9 @@ export class UserContextService {
     try {
       const cUserPromise = this.getUserDetails(userData);
 
-      const [cUser] = await Promise.all([
-        cUserPromise
-      ]);
+      const [cUser] = await Promise.all([cUserPromise]);
 
       const isSuperAdmin = !_.isEmpty(cUser.SuperUser);
-      const isCompanyAdmin = !_.isEmpty(cUser.CompanyAdmin);
 
       const uC: any = {
         user: {
@@ -40,7 +37,6 @@ export class UserContextService {
         },
         baseUrl: BASE_URL,
         isSuperAdmin,
-        isCompanyAdmin,
       };
 
       return uC;
@@ -58,7 +54,6 @@ export class UserContextService {
     const { repo } = this.DB;
     const { id } = user;
     try {
-
       const cUser = await repo.User.findOne({
         where: { id },
         attributes: [
@@ -100,5 +95,4 @@ export class UserContextService {
       }
     }
   }
-
 }

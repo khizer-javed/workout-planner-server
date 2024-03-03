@@ -1,7 +1,7 @@
 import { IsBoolean, IsNotEmpty, IsOptional } from 'class-validator';
 export class AuthCredentialsDto {
   @IsNotEmpty()
-  username: string;
+  email: string;
 
   @IsNotEmpty()
   password: string;

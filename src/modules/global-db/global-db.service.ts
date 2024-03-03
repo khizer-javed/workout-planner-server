@@ -9,6 +9,8 @@ import { UNIQUE_KEY_VIOLATION } from 'src/constants';
 import { LoginToken } from '../auth/entities/login-token.entity';
 import { SuperUser } from '../user/entities/super-user.entity';
 import { User } from '../user/entities/user.entity';
+import { Workout } from '../workout/entities/workout.entity';
+import { Exercise } from '../exercise/entities/exercise.entity';
 
 @Injectable()
 export class GlobalDbService {
@@ -21,10 +23,16 @@ export class GlobalDbService {
     private readonly loginTokenRepository: typeof LoginToken,
     @Inject(REPOSITORIES.SUPER_USER_REPOSITORY)
     private readonly superUserRepository: typeof SuperUser,
+    @Inject(REPOSITORIES.WORKOUT_REPOSITORY)
+    private readonly workoutRepo: typeof Workout,
+    @Inject(REPOSITORIES.EXERCISE_REPOSITORY)
+    private readonly exerciseRepo: typeof Exercise,
   ) {
     this.repo['User'] = this.userRepository;
     this.repo['LoginToken'] = this.loginTokenRepository;
     this.repo['SuperUser'] = this.superUserRepository;
+    this.repo['Workout'] = this.workoutRepo;
+    this.repo['Exercise'] = this.exerciseRepo;
   }
 
   async getOne(model: string, params: any) {

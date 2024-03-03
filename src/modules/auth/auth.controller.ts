@@ -13,7 +13,6 @@ import {
 import { AuthGuard } from '@nestjs/passport';
 import { CreateUserDto } from '../user/dto/create-user.dto';
 import { AuthService } from './auth.service';
-import { GetLoggedInUser } from './decorators/get-logged-in-user.decorator';
 import { GetToken } from './decorators/get-token.decorator';
 import { AuthCredentialsDto } from './dto/auth-credentials.dto';
 

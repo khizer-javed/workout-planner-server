@@ -3,6 +3,8 @@ import { AuthModule } from './modules/auth/auth.module';
 import { DatabaseModule } from './database/database.module';
 import { UserModule } from './modules/user/user.module';
 import { GlobalDbModule } from './modules/global-db/global-db.module';
+import { WorkoutModule } from './modules/workout/workout.module';
+import { ExerciseModule } from './modules/exercise/exercise.module';
 
 @Module({
   imports: [
@@ -10,6 +12,8 @@ import { GlobalDbModule } from './modules/global-db/global-db.module';
     AuthModule,
     DatabaseModule,
     UserModule,
+    WorkoutModule,
+    ExerciseModule,
   ],
   controllers: [],
   providers: [],
