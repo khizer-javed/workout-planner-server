@@ -11,6 +11,7 @@ import { SuperUser } from '../user/entities/super-user.entity';
 import { User } from '../user/entities/user.entity';
 import { Workout } from '../workout/entities/workout.entity';
 import { Exercise } from '../exercise/entities/exercise.entity';
+import { SelectedExercise } from '../selected-workouts/entities/selected-exercise.entity';
 
 @Injectable()
 export class GlobalDbService {
@@ -27,12 +28,15 @@ export class GlobalDbService {
     private readonly workoutRepo: typeof Workout,
     @Inject(REPOSITORIES.EXERCISE_REPOSITORY)
     private readonly exerciseRepo: typeof Exercise,
+    @Inject(REPOSITORIES.SELECTED_EXERCISE_REPOSITORY)
+    private readonly selectedExercise: typeof SelectedExercise,
   ) {
     this.repo['User'] = this.userRepository;
     this.repo['LoginToken'] = this.loginTokenRepository;
     this.repo['SuperUser'] = this.superUserRepository;
     this.repo['Workout'] = this.workoutRepo;
     this.repo['Exercise'] = this.exerciseRepo;
+    this.repo['SelectedExercise'] = this.selectedExercise;
   }
 
   async getOne(model: string, params: any) {

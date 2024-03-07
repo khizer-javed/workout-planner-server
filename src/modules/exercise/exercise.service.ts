@@ -1,5 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { GlobalDbService } from '../global-db/global-db.service';
+import _ from 'lodash';
+import { Op, Sequelize } from 'sequelize';
 
 @Injectable()
 export class ExerciseService {
@@ -14,7 +16,21 @@ export class ExerciseService {
       where.workoutId = params.workoutId;
     }
     return repo.Exercise.findAll({
+      attributes: [
+        'createdAt',
+        'deletedAt',
+        'description',
+        'id',
+        'thumbnail',
+        'title',
+        'updatedAt',
+        'workoutId',
+        [Sequelize.col('SelectedExercise.sequence'), 'sequence'],
+      ],
       where,
+      include: {
+        model: repo.SelectedExercise,
+      },
       order: [['updatedAt', 'desc']],
     });
   };
