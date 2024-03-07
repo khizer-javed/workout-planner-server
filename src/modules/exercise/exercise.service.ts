@@ -45,6 +45,11 @@ export class ExerciseService {
 
   delete = async (id: string, loggedInUser: any) => {
     try {
+      await this.DB.delete(
+        'SelectedExercise',
+        { exerciseId: id },
+        loggedInUser,
+      );
       await this.DB.delete('Exercise', { id }, loggedInUser);
       return { message: 'Exercise Deleted!' };
     } catch (error) {
