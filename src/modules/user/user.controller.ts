@@ -1,19 +1,5 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Put,
-  Param,
-  Delete,
-  ValidationPipe,
-  UseGuards,
-  Logger,
-  Headers,
-  Query,
-} from '@nestjs/common';
+import { Controller, UseGuards, Logger } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { CreateUserDto } from './dto/create-user.dto';
 import { UserService } from './user.service';
 
 @UseGuards(AuthGuard())
@@ -21,5 +7,4 @@ import { UserService } from './user.service';
 export class UserController {
   private logger = new Logger('UserController');
   constructor(private readonly userService: UserService) {}
-
 }
