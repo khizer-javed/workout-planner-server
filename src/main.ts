@@ -12,10 +12,6 @@ async function main() {
   app.use(express.urlencoded({ extended: true, limit: '50mb' }));
   app.use('/', express.static(join(__dirname, '..', 'public')));
   app.enableCors();
-  // if (process.env.ADDRESS) {
-  //   await app.listen(PORT, process.env.ADDRESS);
-  // } else
-
   await app.listen(PORT);
 }
 main();
