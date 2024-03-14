@@ -16,6 +16,8 @@ async function main() {
   //   await app.listen(PORT, '0.0.0.0');
   // } else await app.listen(PORT);
 
-  await app.listen(PORT, '0.0.0.0');
+  await app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Listening on port ${PORT}`);
+  });
 }
 main();
