@@ -17,6 +17,10 @@ async function main() {
   // } else await app.listen(PORT);
 
   await app.listen(10000, '0.0.0.0', () => {
+    console.log('ENV PORT', process.env.PORT);
+    console.log('ENV ADDRESS', process.env.ADDRESS);
+    console.log('ENV NODE_VERSION', process.env.NODE_VERSION);
+
     console.log(`Listening on port 10000`);
   });
 }
