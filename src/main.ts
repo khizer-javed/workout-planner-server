@@ -13,15 +13,9 @@ async function main() {
   app.use('/', express.static(join(__dirname, '..', 'public')));
   app.enableCors();
   // if (process.env.ADDRESS) {
-  //   await app.listen(PORT, '0.0.0.0');
-  // } else await app.listen(PORT);
+  //   await app.listen(PORT, process.env.ADDRESS);
+  // } else
 
-  await app.listen(10000, '0.0.0.0', () => {
-    console.log('ENV PORT', process.env.PORT);
-    console.log('ENV ADDRESS', process.env.ADDRESS);
-    console.log('ENV NODE_VERSION', process.env.NODE_VERSION);
-
-    console.log(`Listening on port 10000`);
-  });
+  await app.listen(PORT);
 }
 main();
